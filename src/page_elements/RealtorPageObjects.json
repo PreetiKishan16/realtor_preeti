@@ -1,0 +1,12 @@
+{
+	"realtor": {
+		"home": {
+			"searchbox": "//*[@id='searchBox']",
+			"searchcountresult": "search-result-count",
+			"searchcountresult2": "//*[@id='search-result-count']",			
+			"pricebeforeDetails": "data-price",
+			"priceafterDetails": "/html/body/div[5]/div[7]/div[1]/div[1]/div[2]/main/div[1]/section/div/div[2]/div[1]/div/span"
+			
+		}	
+	}
+}
