@@ -20,9 +20,7 @@ jasmineNodeOpts : {
 	multiCapabilities : [
 	{ browserName: 'chrome' },
 	{ browserName : 'firefox' }
-	
-//	{ browserName: 'internet explorer' }
-	  
+		  
 	],
 	
 	//autoDismissAlerts = true,

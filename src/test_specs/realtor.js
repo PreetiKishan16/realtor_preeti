@@ -9,7 +9,8 @@ describe('Navigate to Realtor and Search:', function() {
 	browser.get(callURLObject.realtor_url);
 	
 	it('Enter search field value in home page', function() {
-		//focus on the search box, enter value and press enter
+		/*Focus on the search box, enter value "Morgantown, WV" and press Enter. 
+		 input variable is globally declared */
 		input.click();
 		browser.sleep(2000);
 		input.sendKeys("Morgantown, WV");
@@ -21,7 +22,7 @@ describe('Navigate to Realtor and Search:', function() {
 
 	it('verify number N is greater than 0', function() {
 		
-        //Survery feedback ads are displayed on search results page - Dismiss Ads
+        //Survery feedback ads are displayed randomly on search results page - Dismiss Ads when they popup.
         browser.getCurrentUrl().then(function(url) {
        browser.navigate().refresh().catch(function() {
            return browser.switchTo().alert().then(function (alert) {
@@ -31,13 +32,11 @@ describe('Navigate to Realtor and Search:', function() {
        });
 
    });
-
-		
-		//1st tile version 
-		/*Get the search count element, extract only the number and compare it to be greater than 0. */
+        
+		// Tile version 
+		/*Get the search count element, extract only the number from string and verify it to be greater than 0. */
 		element(By.id(callPageObjects.realtor.home.searchcountresult)).getText().then(
-				//2nd list version
-	           //element(By.xpath(callPageObjects.realtor.home.searchcountresult2)).getText().then(
+			
 						function(text) {							
 							search_countresult = String(text).replace(/[^0-9]/g, '');
 							console.log(' *** Number of Homes = :  ' + search_countresult);								
@@ -49,9 +48,10 @@ describe('Navigate to Realtor and Search:', function() {
 	it(
 			'Click Address of second result',
 			function() {
-
-				// get value of price from Search Results page
-				// tile version
+				
+				// Tile version
+				/* Get value of price from Search Results page, click on 2nd result and get value of price after View Details.*/
+				
 				element
 				.all(By.className(callPageObjects.realtor.home.pricebeforeDetails))
 				.get(1)
@@ -59,7 +59,7 @@ describe('Navigate to Realtor and Search:', function() {
 				.then(
 						function(text) {
 							console
-							.log('  Price on Search Result Page:  '
+							.log('  **** Price on Search Result Page:  '
 									+ text);
 							price_beforeViewDetails = text;
 							element(By.id('2')).click();
@@ -70,7 +70,7 @@ describe('Navigate to Realtor and Search:', function() {
 									.then(
 											function(text) {
 												console
-												.log(' Price on View Details Page: '
+												.log(' **** Price on View Details Page: '
 														+ text);
 												price_afterViewDetails = text;
 												expect(
@@ -79,6 +79,8 @@ describe('Navigate to Realtor and Search:', function() {
 																price_afterViewDetails);
 
 											});
+							console
+							.log(' **** Prices before and after View Details click match!!!!****');
 							browser.sleep(3000)
 						});
 
